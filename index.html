@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AYMANBET | Sportsbook</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101713;color:#fff;font-family:Arial,sans-serif}
+header{background:#17221b;padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #304536}
+.logo{font-size:25px;font-weight:900;color:#35d477}
+.logo span{color:white}
+button{cursor:pointer}
+.login{background:#35c875;color:#07140c;border:0;padding:11px 16px;border-radius:7px;font-weight:bold}
+nav{display:flex;gap:22px;overflow:auto;padding:16px;background:#18231c;white-space:nowrap}
+nav a{color:#ddd;text-decoration:none;font-weight:bold}
+main{padding:18px;max-width:1050px;margin:auto}
+h2{font-size:21px}
+.banner{background:linear-gradient(120deg,#174b2c,#17231b);padding:25px;border-radius:12px;margin:15px 0}
+.banner h1{font-size:29px;margin:0 0 10px}
+.banner p{color:#c7d9cc}
+.section{margin-top:28px}
+.match{background:#1b2720;border:1px solid #304436;border-radius:10px;padding:16px;margin:12px 0}
+.league{color:#91a99a;font-size:12px;margin-bottom:13px}
+.teams{display:flex;justify-content:space-between;align-items:center;font-weight:bold;gap:8px}
+.vs{color:#91a99a;font-size:12px}
+.odds{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:17px}
+.odd{background:#29382e;color:white;border:1px solid #405548;border-radius:7px;padding:12px 5px;font-weight:bold}
+.odd small{display:block;color:#a9c0af;margin-bottom:5px}
+.odd.selected{background:#278d50;border-color:#52e58c}
+.odd:active{transform:scale(.97)}
+.slip{background:#1b2720;border:1px solid #405548;padding:16px;border-radius:10px;margin-top:25px}
+.slip p{color:#bdcabe}
+.action{background:#35c875;color:#07140c;border:0;padding:13px;width:100%;border-radius:7px;font-weight:bold;margin-top:10px}
+footer{text-align:center;padding:30px;color:#899b8e;font-size:12px}
+.notice{font-size:12px;color:#aebbb1;line-height:1.6}
+@media(max-width:450px){.banner h1{font-size:24px}.teams{font-size:14px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">AYMAN<span>BET</span></div>
+<button class="login" onclick="alert('Demo: account non attivo')">ACCEDI</button>
+</header>
+
+<nav>
+<a href="#calcio">Calcio</a>
+<a href="#basket">Basket</a>
+<a href="#tennis">Tennis</a>
+<a href="#schedina">Schedina</a>
+</nav>
+
+<main>
+<div class="banner">
+<h1>WELCOME TO AYMANBET</h1>
+<p>Il mondo dello sport, tutto in un unico posto.</p>
+<strong>SPORTSBOOK DEMO</strong>
+</div>
+
+<section class="section" id="calcio">
+<h2>Calcio – Partite demo</h2>
+
+<div class="match">
+<div class="league">CAMPIONATO DIMOSTRATIVO</div>
+<div class="teams"><span>Real Madrid</span><span class="vs">VS</span><span>Barcelona</span></div>
+<div class="odds">
+<button class="odd" onclick="pick(this,'Real Madrid - Barcelona','1',2.10)"> <small>1</small>2.10</button>
+<button class="odd" onclick="pick(this,'Real Madrid - Barcelona','X',3.20)"><small>X</small>3.20</button>
+<button class="odd" onclick="pick(this,'Real Madrid - Barcelona','2',2.80)"><small>2</small>2.80</button>
+</div>
+</div>
+
+<div class="match">
+<div class="league">CAMPIONATO DIMOSTRATIVO</div>
+<div class="teams"><span>Inter</span><span class="vs">VS</span><span>Juventus</span></div>
+<div class="odds">
+<button class="odd" onclick="pick(this,'Inter - Juventus','1',1.90)"><small>1</small>1.90</button>
+<button class="odd" onclick="pick(this,'Inter - Juventus','X',3.30)"><small>X</small>3.30</button>
+<button class="odd" onclick="pick(this,'Inter - Juventus','2',3.60)"><small>2</small>3.60</button>
+</div>
+</div>
+</section>
+
+<section class="section" id="basket">
+<h2>Basket</h2>
+<div class="match">
+<div class="league">BASKET DEMO</div>
+<div class="teams"><span>Lakers</span><span class="vs">VS</span><span>Celtics</span></div>
+<div class="odds">
+<button class="odd" onclick="pick(this,'Lakers - Celtics','1',1.85)"><small>Vittoria 1</small>1.85</button>
+<button class="odd" onclick="pick(this,'Lakers - Celtics','2',1.95)"><small>Vittoria 2</small>1.95</button>
+</div>
+</div>
+</section>
+
+<section class="section" id="tennis">
+<h2>Tennis</h2>
+<div class="match">
+<div class="league">TENNIS DEMO</div>
+<div class="teams"><span>Giocatore A</span><span class="vs">VS</span><span>Giocatore B</span></div>
+<div class="odds">
+<button class="odd" onclick="pick(this,'Giocatore A - Giocatore B','1',1.70)"><small>Vincente 1</small>1.70</button>
+<button class="odd" onclick="pick(this,'Giocatore A - Giocatore B','2',2.10)"><small>Vincente 2</small>2.10</button>
+</div>
+</div>
+</section>
+
+<section class="slip" id="schedina">
+<h2>La tua schedina demo</h2>
+<p id="selection">Seleziona una quota per iniziare.</p>
+<p id="stake">Puntata virtuale: 10 crediti</p>
+<p id="potential">Vincita potenziale: 0 crediti</p>
+<button class="action" onclick="placeBet()">CONFERMA SCOMMESSA DEMO</button>
+<p class="notice">Questa è una simulazione: nessun denaro viene depositato, puntato o pagato.</p>
+</section>
+</main>
+
+<footer>
+AYMANBET © 2026<br><br>
+Piattaforma dimostrativa – Non accetta scommesse reali.
+</footer>
+
+<script>
+let selected=null;
+function pick(btn,match,outcome,odd){
+document.querySelectorAll('.odd').forEach(b=>b.classList.remove('selected'));
+btn.classList.add('selected');
+selected={match,outcome,odd};
+document.getElementById('selection').textContent=match+' – '+outcome+' @ '+odd.toFixed(2);
+document.getElementById('potential').textContent='Vincita potenziale: '+(10*odd).toFixed(2)+' crediti';
+}
+function placeBet(){
+if(!selected){alert('Seleziona prima una quota');return;}
+alert('Schedina demo registrata. Nessun denaro reale coinvolto.');
+}
+</script>
+</body>
+</html>
